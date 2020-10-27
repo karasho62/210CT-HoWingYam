@@ -7,7 +7,7 @@ class BasicW1Q1 {
 
     private static void main(String args[]) {
         try {
-            int testing=0;
+            int testing002=0;
             Scanner sc = new Scanner(System.in);
             System.out.println("Please enter the first string");
             String str1 = sc.nextLine();
