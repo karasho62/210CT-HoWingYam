@@ -11,7 +11,7 @@ package BasicW2Q3;
  */
 public class Circle extends Shape {
 
-    Point center;
+    Point pcenter;
     double R;
 
     public Circle(double centerX, double centerY, double R) {
@@ -30,11 +30,11 @@ public class Circle extends Shape {
     }
 
     public void setCenter(Point pcenter) {
-        this.center = center;
+        this.pcenter = pcenter;
     }
 
     public Point getCenter() {
-        return center;
+        return pcenter;
     }
 
     public double getArea() {
@@ -42,6 +42,6 @@ public class Circle extends Shape {
     }
 
     public String toString() {
-        return "Center = " + center + "; Radius = " + R;
+        return "Center = " + pcenter + "; Radius = " + R;
     }
 }
