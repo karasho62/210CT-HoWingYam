@@ -1,4 +1,4 @@
-package BasicW5Q8;
+package BasicW5Q8Q9W6Q10;
 
 public class BinarySearchTree {
 
@@ -13,15 +13,23 @@ public class BinarySearchTree {
         return root == null;
     }
 
-    public BinaryNode search(BinaryNode t, int x) {
+    public int search(int x) {
+        try {
+            BinaryNode pRoot = root;
+            return searchTree(pRoot, x).data;
+        } catch (Exception e) {
+            return -1;
+        }
+    }
+
+    public BinaryNode searchTree(BinaryNode t, int x) {
         if (t == null) {
-            System.out.println("18");
             return null;
         }
         if (x < t.data) {
-            return search(t.left, x);
+            return searchTree(t.left, x);
         } else if (x > t.data) {
-            return search(t.right, x);
+            return searchTree(t.right, x);
         } else {
             return t;
         }
@@ -109,28 +117,33 @@ public class BinarySearchTree {
     }
 
     public void delete(int x) {
-        root = deleteSubtree(root, x);
+        if (deleteSubtree(root, x) != null) {
+            System.out.println("Delete "+x+" is done");
+        } else {
+            System.out.println("Delete "+x+" is failed");
+        }
     }
 
     private BinaryNode deleteSubtree(BinaryNode t, int x) {
         BinaryNode temp, child;
-        if (t == null) {
+        try {
+            if (t == null) {
+                return null;
+            }
+            if (x < t.data) {
+                t.left = deleteSubtree(t.left, x);
+            } else if (x > t.data) {
+                t.right = deleteSubtree(t.right, x);
+            } else if (t.left != null && t.right != null) {
+                t.data = findMin(t.right).data;
+                t.right = deleteSubtree(t.right, t.data);
+            } else {
+                t = (t.left != null) ? t.left : t.right;
+            }
+            return t;
+        } catch (Exception e) {
             return null;
         }
-        if (x < t.data) {
-            t.left = deleteSubtree(t.left, x);
-        } else if (x > t.data) {
-            t.right = deleteSubtree(t.right, x);
-        } else if (t.left != null && t.right != null) {
-            /* has 2 leaves */
-            System.out.println("126:" + t.data);
-            t.data = findMin(t.right).data;
-            t.right = deleteSubtree(t.right, t.data);
-        } else {
-            System.out.println("130:");
-            t = (t.left != null) ? t.left : t.right;
-        }
-        return t;
     }
 
     public int size() {
@@ -156,19 +169,5 @@ public class BinarySearchTree {
         int h = heightSubtree(t.left);
         int k = heightSubtree(t.right);
         return h > k ? h + 1 : k + 1;
-    }
-
-    public void ascendingOrder() {
-        ascendingOrderSubtree(root);
-        System.out.println();
-    }
-
-    private void ascendingOrderSubtree(BinaryNode t) {
-        if (t == null) {
-            return;
-        }
-
-        t.data = findMin(t).data;
-
     }
 }

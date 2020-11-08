@@ -3,9 +3,9 @@ package BasicW1Q1;
 
 import java.util.*;
 
-class BasicW1Q1 {
+public class BasicW1Q1 {
 
-    private static void main(String args[]) {
+    public static void main(String args[]) {
         try {
             Scanner sc = new Scanner(System.in);
             System.out.println("Please enter the first string");

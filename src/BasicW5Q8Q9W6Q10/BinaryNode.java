@@ -1,5 +1,4 @@
-package LabBasicW5Q8;
-
+package BasicW5Q8Q9W6Q10;
 public class BinaryNode {
 
     int data;
